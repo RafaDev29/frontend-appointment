@@ -1,3 +1,7 @@
+<?php
+session_start(); // Iniciar sesión para verificar si el usuario está autenticado
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,8 +16,13 @@
         <ul>
             <li><a href="index.php" class="active">Inicio</a></li>
             <li><a href="noticias.php">Noticias</a></li>
-            <li><a href="registro.php">Registro</a></li>
-            <li><a href="login.php">Iniciar Sesión</a></li>
+            <?php if (isset($_SESSION['usuario'])): ?> <!-- Si el usuario ha iniciado sesión -->
+                <li><a href="citas.php">Citas</a></li>
+                <li><a href="logout.php">Cerrar Sesión</a></li>
+            <?php else: ?>
+                <li><a href="registro.php">Registro</a></li>
+                <li><a href="login.php">Iniciar Sesión</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -26,35 +35,34 @@
         </div>
     </header>
 
- <!-- Sección de Servicios -->
-<section class="servicios">
-    <h2>Nuestros Servicios Dentales</h2>
-    <p>Ofrecemos una amplia gama de servicios dentales para mejorar tu salud bucal:</p>
+    <!-- Sección de Servicios -->
+    <section class="servicios">
+        <h2>Nuestros Servicios Dentales</h2>
+        <p>Ofrecemos una amplia gama de servicios dentales para mejorar tu salud bucal:</p>
 
-    <div class="card-container">
-        <div class="card">
-            <h3>Chequeo Dental Completo</h3>
-            <p>Realizamos una evaluación exhaustiva de tu salud bucal.</p>
+        <div class="card-container">
+            <div class="card">
+                <h3>Chequeo Dental Completo</h3>
+                <p>Realizamos una evaluación exhaustiva de tu salud bucal.</p>
+            </div>
+            <div class="card">
+                <h3>Limpieza y Profilaxis Dental</h3>
+                <p>Eliminamos la placa y el sarro para una sonrisa más saludable.</p>
+            </div>
+            <div class="card">
+                <h3>Tratamiento de Caries</h3>
+                <p>Tratamos las caries para evitar complicaciones en tu salud dental.</p>
+            </div>
+            <div class="card">
+                <h3>Ortodoncia y Endodoncia</h3>
+                <p>Soluciones avanzadas para corregir la posición de tus dientes.</p>
+            </div>
+            <div class="card">
+                <h3>Asesoría de Higiene Oral</h3>
+                <p>Te ayudamos a mantener una higiene oral adecuada día a día.</p>
+            </div>
         </div>
-        <div class="card">
-            <h3>Limpieza y Profilaxis Dental</h3>
-            <p>Eliminamos la placa y el sarro para una sonrisa más saludable.</p>
-        </div>
-        <div class="card">
-            <h3>Tratamiento de Caries</h3>
-            <p>Tratamos las caries para evitar complicaciones en tu salud dental.</p>
-        </div>
-        <div class="card">
-            <h3>Ortodoncia y Endodoncia</h3>
-            <p>Soluciones avanzadas para corregir la posición de tus dientes.</p>
-        </div>
-        <div class="card">
-            <h3>Asesoría de Higiene Oral</h3>
-            <p>Te ayudamos a mantener una higiene oral adecuada día a día.</p>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Sección de Reservas -->
     <section class="reservas">
